@@ -27,7 +27,7 @@ export default function CustomerOrders () {
             <Accordion.Item key={index} eventKey={String(index)}>
               {/* Accordion Header with Customer's Info */}
               <Accordion.Header>
-               <strong>Order ID: {order.orderId} - {order.customerName} ({order.totalAmount} {order.currency || "INR"})</strong> <br /><br />
+               <strong>Order ID: {order.orderId} || {order.customerName} || ({order.totalAmount} {order.currency || "INR"})</strong> <br /><br />
                 
               </Accordion.Header>
 
@@ -62,13 +62,13 @@ export default function CustomerOrders () {
                 {/* Additional Order Information */}
                 <div className="order-info">
                   <p><strong>Order Status:</strong> {order.orderStatus}</p>
-                  <p><strong>Delivery Date:</strong> {new Date(order.deliveryDate).toLocaleDateString()}</p>
+                  <p><strong>Delivery Date:</strong> {new Date(order.deliveryDate).toLocaleDateString() }</p>
                  
                   {/* Accessing paymentStatus from payment object */}
                   <p><strong>Payment Status:</strong> {order.payment.paymentStatus || "Not Available"}</p>
                   <strong>Delivery Address:</strong> {order.address.houseNo}, {order.address.street}, {order.address.city}, {order.address.district}, {order.address.state} <br />
                   <hr></hr>
-                  <p>You can contact on following number to get details about your order: 8888888888</p>
+                  <p>You can contact or Whatsapp on following number to get details about your order: 9811686905</p>
                 </div>
               </Accordion.Body>
             </Accordion.Item>

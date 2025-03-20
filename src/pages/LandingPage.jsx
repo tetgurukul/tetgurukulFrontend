@@ -4,6 +4,7 @@ import ShowProduct from "../components/ShowProducts"
 import PutProductForm from "../components/PutProduct";
 import NavBar from "../components/NavBar";
 import { ProductListing } from "../components/ProductListing";
+import Footer from '../components/Footer.jsx';
 
 export default function LandingPage () {
 
@@ -20,6 +21,7 @@ export default function LandingPage () {
         <hr></hr> */}
         <ProductListing/>
 
+        
         
         </>
     )

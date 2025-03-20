@@ -31,6 +31,8 @@ import CustomerSignupPage from './components/CustomerSignupPage.jsx';
 import CustomerOrders from './components/CustomerOrders.jsx';
 import ShowOrders from './components/ShowOrders.jsx';
 import PaymentPageByAdmin from "./pages/PaymentPageByAdmin.jsx";
+import Footer from './components/Footer.jsx';
+
 
 function App() {
   return (
@@ -82,6 +84,7 @@ function App() {
       </OrderProvider>
       </ProductContextProvider>
     </Router>
+    <Footer/>
     </>
   );
 }

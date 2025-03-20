@@ -101,10 +101,12 @@ export default function ShowOrders () {
                   {/* Payment Status and Payment Mode */}
                   <p><strong>Payment Status:</strong> {order.payment.paymentStatus || "Not Available"}</p>
                   <p><strong>Payment Mode:</strong> {order.payment.paymentType || "Not Available"}</p>
+                  <p><strong>Contact No.:</strong> {order.phone || "Not Available"}</p>
+                  <p><strong>Alternate No.:</strong> {order.phone || "Not Available"}</p>
                   <hr />
                   
                   {/* If payment is not done, show the 'Pay Now' button */}
-                  {order.payment.paymentStatus === "Not Paid" && (
+                  {order.payment.paymentStatus === "" && (
                     <Button variant="primary" onClick={() => handlePayment(order.orderId, order.finalAmount)}> {/*onClick={() => handlePayment(order.orderId)}*/ }
                       Pay Now
                     </Button>

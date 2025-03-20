@@ -160,7 +160,7 @@ export default function Products() {
   return (
     <>
       <NavBar cartCount={"cartArray"} />
-      <h1>I am prodcut Listing page</h1>
+      <h1></h1>
       <div
         style={{
           display: "grid",
@@ -214,7 +214,7 @@ export default function Products() {
       </div>
 
       {/* below div is for when cart has some products in it */}
-      <CartAndCheckout />
+      {/* <CartAndCheckout /> */}
     </>
   );
 }

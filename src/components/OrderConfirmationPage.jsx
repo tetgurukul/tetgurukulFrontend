@@ -96,16 +96,16 @@ function OrderConfirmationPage() {
         </nav>
         <div className="Order-Confirmation-Page">
           <div className="card-container">
-            <h4>Congratulations!</h4>
+            <h2>Congratulations!</h2>
             <hr />
             <Row>
               <Col>
                 <div>
                   {/* All your form fields go here */}
                   <h3>
-                    Your order has been placed. Click below to check your order
-                    details.
+                  Your order has been placed.
                   </h3>
+                  <hr></hr>
                   <br></br>
                   <br></br>
                   <br></br>

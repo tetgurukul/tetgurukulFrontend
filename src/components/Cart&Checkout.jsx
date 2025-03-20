@@ -158,37 +158,34 @@ export default function CartAndCheckout() {
             );
           })}
         </Col>
-        <Col style={{ border: "solid", height: "500px" }}>
-          <Row>
-            <Col>
-              <h3>Items Summary:</h3>
-              <hr></hr>
-              <p>Total Article: {totalArticleCount}</p>
-              <p>Price Sumary: </p>
-              {productContext.map((eachCartProduct) => {
-                return (
-                  <>
-                    <p className="product-info">
-                      <span className="product-name">
-                        {eachCartProduct.product.productName}
-                      </span>
-                      <span className="product-price">
-                        {eachCartProduct.product.salePrice *
-                          eachCartProduct.count}
-                      </span>
-                    </p>
-                  </>
-                );
-              })}
-              <hr></hr>
-              <h5>Total Price: Rs.{totalArticlePrice}</h5>
-              <hr></hr>
-              <Link to={"/customer-address"}>
-                <Button>Click To Buy</Button>
-              </Link>
-            </Col>
-          </Row>
-        </Col>
+        <Col className="item-summary-card" >
+  <Row>
+    <Col>
+      <h3>Items Summary:</h3>
+      <hr></hr>
+      <p>Total Article: {totalArticleCount}</p>
+      <p>Price Summary: </p>
+      {productContext.map((eachCartProduct) => {
+        return (
+          <p className="product-info">
+            <span className="product-name">
+              {eachCartProduct.product.productName}
+            </span>
+            <span className="product-price">
+              Rs. {eachCartProduct.product.salePrice * eachCartProduct.count}
+            </span>
+          </p>
+        );
+      })}
+      <hr></hr>
+      <h5>Total Price: Rs. {totalArticlePrice}</h5>
+      <hr></hr>
+      <Link to={"/customer-address"}>
+        <Button className="buy-button">Click To Buy</Button>
+      </Link>
+    </Col>
+  </Row>
+</Col>
       </Row>
     </Container>
   );

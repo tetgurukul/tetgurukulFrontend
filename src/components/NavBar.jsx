@@ -43,8 +43,8 @@ function NavBar(propsForShoingProductCountInCart) {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="#link">All Items</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+            <Nav.Link href="#link">About-Us</Nav.Link>
+            {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
                 Another action
@@ -54,7 +54,7 @@ function NavBar(propsForShoingProductCountInCart) {
               <NavDropdown.Item href="#action/3.4">
                 Separated link
               </NavDropdown.Item>
-            </NavDropdown>
+            </NavDropdown> */}
           </Nav>
         </Navbar.Collapse>
       </Container>
@@ -78,7 +78,7 @@ function NavBar(propsForShoingProductCountInCart) {
         
       </svg>
       <small style={{paddingLeft:'12px'}}>Cart</small>
-      <div>{propsForShoingProductCountInCart.cartCount}</div>
+      {/* <div>{propsForShoingProductCountInCart.cartCount}</div> */}
 
       </div>
       

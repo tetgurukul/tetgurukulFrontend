@@ -242,7 +242,8 @@ const [customerOrderObject, setCutomerOrderObject] = useState({})
         <nav>
           <NavBar />
         </nav>
-        <h4>Your Address and Details</h4>
+        <hr></hr>
+        <h4>Add Your Delivery Address and Contact Details:</h4>
         <hr></hr>
         <Row>
           <Col>
@@ -304,7 +305,7 @@ const [customerOrderObject, setCutomerOrderObject] = useState({})
               </Form.Group>
 
               {/* Address Details */}
-              <h4>Address</h4>
+              {/* <h4>Address</h4> */}
               <Form.Group className="mb-3" controlId="houseNo">
                 <Form.Label>
                   Flat, House no., Building, Company, Apartment
@@ -461,10 +462,13 @@ const [customerOrderObject, setCutomerOrderObject] = useState({})
     <option value="Online">Online Payment</option>
   </Form.Control>
 </Form.Group>
-
-              <Button  variant="primary" type="submit">
+      <Row>
+      <Button  variant="primary" type="submit">
                 Submit and Proceed to Pay
               </Button>
+      </Row>
+              
+              <hr></hr>
         
             </Form>
           </Col>
