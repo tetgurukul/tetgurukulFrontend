@@ -1,14 +1,20 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { createOrder, verifyPayment } from "../services/paymentServices";
 import { updatePaymentStatus } from "../services/orderServices";
 import { useNavigate } from "react-router-dom";
+import { useNotificationCenter } from "react-toastify/addons/use-notification-center";
 
-const RazorpayCheckout = ({ orderId, amount }) => {
-
+const RazorpayCheckoutByAdmin = ({ orderId, amount }) => {
 
     //Initializint useNavigate for conditional rendering
-      const navigate = useNavigate();
-      //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    const navigate = useNavigate();
+    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    //Below hook dynamically set the isPaid to true once the payment Status is updated in orders collections ind db
+
+    // const [isPaid, setIsPaid] = useState(false)
+
+    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   
   const handlePayment = async () => {
     try {
@@ -30,30 +36,27 @@ const RazorpayCheckout = ({ orderId, amount }) => {
             };
             
             const verifyResponse = await verifyPayment(paymentData);
-            alert("Payment successful!");
+            alert("Payment successful yay!");
             console.log(`after successfull payment i am order id: ${orderId}`)
 
             let _id = orderId
 
             //Once the payment is done below Api updates the payment object, in orders collections.
 
-            // const updateResponse = await updatePaymentStatus(_id);
-
-            //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-            //Once the payment is done below Api updates the payment object, in orders collections.
-
             try {
                 const updateResponse = await updatePaymentStatus(_id);
                 if (updateResponse) {
-                    navigate('/order-confirmation');
+                    navigate('/orders');
                   }
             } catch (error) {
                 console.log('Eroor updating payment status', error)
             }
 
+            
 
+            //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+           
           } catch (error) {
             console.error("Payment verification failed:", error);
             alert("Payment failed!");
@@ -75,4 +78,4 @@ const RazorpayCheckout = ({ orderId, amount }) => {
   return <button onClick={handlePayment}>Pay ₹{amount}</button>;
 };
 
-export default RazorpayCheckout;
+export default RazorpayCheckoutByAdmin;

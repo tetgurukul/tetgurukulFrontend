@@ -35,7 +35,7 @@ export function ProductListing() {
 
   return (
     <>
-      <h1>I am prodcut Listing page</h1>
+      {/* <h1>I am prodcut Listing page</h1> */}
       <div 
         style={{
             display: "grid",

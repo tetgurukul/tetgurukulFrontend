@@ -1,11 +1,9 @@
-//Payment page component
-
 import React, { useEffect, useState } from "react";
-import RazorpayCheckout from "../components/RazorpayCheckout";
-import { useLocation } from "react-router-dom";
+import RazorpayCheckoutByAdmin from "../components/RazorPayCheckoutByAdmin";
+import { useLocation } from "react-router-dom";  // Import useLocation
 import { getOrderByOrderId } from "../services/orderServices";
 
-const PaymentPage = () => {
+const PaymentPageByAdmin = () => {
   const [customerOrderObject, setCustomerOrderObject] = useState(null); // Initially null
   const [amount, setAmount] = useState(0); // Initially 0
   const [loading, setLoading] = useState(true); // Track loading state
@@ -38,12 +36,11 @@ const PaymentPage = () => {
     }
   };
 
-  // Run the fetchOrderData function when the component mounts or when orderId changes
   useEffect(() => {
     if (orderId) {
       fetchOrderData();
     }
-  }, [orderId]); // Dependency on orderId to refetch when it changes
+  }, [orderId]);
 
   // If still loading, show a loading message or spinner
   if (loading) {
@@ -58,9 +55,9 @@ const PaymentPage = () => {
   return (
     <div style={{ textAlign: "center", marginTop: "50px" }}>
       <h2>Total Amount: ₹{amount || finalAmount}</h2>
-      {orderObjectId && <RazorpayCheckout orderId={orderObjectId} amount={amount || finalAmount} />}
+      {orderObjectId && <RazorpayCheckoutByAdmin orderId={orderObjectId} amount={amount || finalAmount} />}
     </div>
   );
 };
 
-export default PaymentPage;
+export default PaymentPageByAdmin;

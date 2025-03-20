@@ -1,7 +1,12 @@
 //Payment service calls backend api.
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:8050/api/payments"; // Update with your backend URL
+//const API_BASE_URL = "http://localhost:8050/api/payments"; // Update with your backend URL
+
+
+//Enviornment variable
+const API_BASE_URL = `${process.env.REACT_APP_API_BASE_URL}/payments`;
+
 
 export const createOrder = async (orderId, amount) => {
   try {

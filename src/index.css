@@ -11,3 +11,102 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.check-out-cards {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px;
+  max-width: 800px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-image img {
+
+width: 150px;
+padding: 10px;
+}
+
+.cehckout-div {
+  
+  
+}
+
+
+
+/* Below css block is fof item summary in Cart&Checkout.jsx component_____________ */
+
+.product-info {
+  display: flex;
+  justify-content: space-between; /* Space between the elements */
+  align-items: center; /* Aligns items vertically */
+}
+
+.product-name {
+  flex: 1; /* Takes up available space, forcing the other items to stay aligned */
+  text-align: left;
+}
+
+.product-price {
+  text-align: center;
+  margin: 0 10px; /* Optional: Adds some space around the price */
+}
+
+.product-quantity {
+  text-align: right;
+}
+
+
+/* ________________________________________________________________________________________________ */
+
+
+
+
+/*OrderConfirmationPage*/
+
+.Order-Confirmation-Page {
+  display: flex;
+  justify-content: center;  /* Centers horizontally */
+  align-items: center;      /* Centers vertically */
+  height: 100vh;            /* Makes sure it takes the full viewport height */
+  text-align: center;       /* Centers the text */
+  border: solid 1px #ddd;  /* Light grey border */
+  width: 600px;             /* Set width for the card */
+  padding: 20px;            /* Padding inside the card */
+  border-radius: 10px;      /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for card effect */
+  background-color: white;  /* White background for the card */
+}
+
+h4 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+button {
+  margin-top: 20px; /* Space between form and button */
+}
+
+.Order-Confirmation-Page {
+  display: flex;
+  justify-content: center;  /* Centers horizontally */
+  align-items: center;      /* Centers vertically */
+  height: 100vh;            /* Makes sure it takes the full viewport height */
+  width: 100vw;             /* Ensures the container spans the full width of the screen */
+  padding: 0;               /* Removes any padding around the container */
+  margin: 0;                /* Removes any margin from body or parent elements */
+}
+
+.card-container {
+  border: solid 1px #ddd;  /* Light grey border */
+  width: 600px;             /* Set width for the card */
+  height: 500px;
+  padding: 20px;            /* Padding inside the card */
+  border-radius: 10px;      /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for card effect */
+  background-color: white;  /* White background for the card */
+}
+
+
+/*______________________________________________*/

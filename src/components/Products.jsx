@@ -1,80 +1,210 @@
 //This shows final products that is to be bought.
 
 //Importing packages
-import React, {useState, useEffect} from "react";
-import { useParams } from "react-router-dom";//Recieiving params from ProductSubCategory component
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom"; //Recieiving params from ProductSubCategory component
 import { getProduct } from "../services/ProductService";
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import NavBar from "../components/NavBar";
+import { useNavigate } from "react-router-dom";
 
-export default function Products () {
+//Using power of context api inside /components/ProductContextApi.js
+import { useProductContext } from "./ContextApi/ProductContextApi";
 
-    //Destructuring params from ProductSubCategory comp
-    const {category, subcategory} = useParams();
+//Importing cart&Checkout component
+import CartAndCheckout from "../components/Cart&Checkout";
 
-    // console.log(category)
-    // console.log(subcategory)
+export default function Products() {
 
-    //Below api gets all the product data from the db and filters the data on fronten using useParams parameter.
-    //I will optimise the API in future so that, data gets filtered in backend, and we won't need to make a load on frontend.
+  //Initializing useNavigate for conditional rendering.
+    const navigate = useNavigate();
 
-    //Below Hook stores all the active products Data.
-      const [allProductData, setProductAllData] = useState([]);
+  //______________________________________________________
+
+
+  //Destructuring params from ProductSubCategory comp
+  const { category, subcategory } = useParams();
+
+  //Below api gets all the product data from the db and filters the data on fronten using useParams parameter.
+  //I will optimise the API in future so that, data gets filtered in backend, and we won't need to make a load on frontend.
+
+  //Below Hook stores all the active products Data.
+  const [allProductData, setProductAllData] = useState([]);
+
+  //if cart is not empty(which is false), then Cart&Checkout component gets activated
+  // and when user clicks on cart button then this sets to false.
+  const [isCartEmpty, setIsCartEmpty] = useState(true);
+  //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  const fetchProductData = async () => {
+
+
+    try {
+      const response = await getProduct();
+      setProductAllData(response.data);
+      // console.log("Get product successfully executed");
+      // console.log(response.data);
+    } catch (error) {
+      console.log(`Error fetching products data ${error}`);
+      console.log("Error occured while getting products data.");
+    }
+  };
+
+  //
+
+  useEffect((category, subcategory) => {
+    fetchProductData();
+  }, []);
+
+  //Filtering product data according to the category and subcategory selected by user and showing it on product page.
+  const filteredProducts = allProductData.filter(
+    (eachFilteredProduct) =>
+      eachFilteredProduct.productCategory === category &&
+      eachFilteredProduct.productSubName === subcategory
+  );
+  //console.log(filteredProducts)
+  //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  //Context API inside /components/ProductContextApi.js
+  const { addProductArrayInContext } = useProductContext();
+  const { productContext } = useProductContext();
+
+  //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  //Adds productId to array using addProductToCart.
+  //When user clicks on Add to card button, it sends the id in an array created in below funciton
+
+  // const [cartArray, setCartArray] = useState([]);
+
+  /*
+  const addProductToCart = (productId) =>{ 
+
+    // Copy the current cart array to prevent mutation (for context api)
+      const cart = [...productContext];
+
+    // Check if the productId already exists in the array
+    const product = cart.find(item => item.product === productId);
+
+    if (product) {
+        // If the productId is found, increment the count
+        product.count++;
+    } else {
+        // If the productId doesn't exist, add it to the array with a count of 1
+        cart.push({product:productId, count: 1})
+    }
+
+     // Update the context with the modified cart array
+      //  setCartArray(cart);
+      addProductArrayInContext(cart);
+
+    // console.log('i am context api cart below')
+    console.log(cart)
+}
+
+*/
+
+  const addProductToCart = (productId) => {
+    // Get the full product data based on productId
+    const product = filteredProducts.find((item) => item._id === productId); // Assuming `filteredProducts` has all products available.
+
+    if (!product) return; // If the product is not found, exit
+
+    // Copy the current cart array to prevent mutation (for context api)
+    const updatedCart = [...productContext];
+
+    // Check if the product already exists in the cart (based on product ID)
+    const existingProduct = updatedCart.find(
+      (item) => item.product._id === productId
+    );
+
+    if (existingProduct) {
+      // If the product already exists in the cart, increment the count
+      existingProduct.count++;
+    } else {
+      // If the product doesn't exist, add it to the cart
+      updatedCart.push({ product, count: 1 });
+    }
+
+    // Update the context with the modified cart array
+    addProductArrayInContext(updatedCart);
+
+    // Log for debugging
+    console.log(updatedCart);
+  };
+
+  // const [cart, setCart] = useState([]);
+
+  // const addProductToCart = (productId) => {
+  //   setCart((prevCart) => {
+  //     const updatedCart = [...prevCart, productId];
+  //     addProductArrayInContext(updatedCart); // Update context with the updated cart
+  //     return updatedCart; // Return the updated cart state
+  //   });
+  // };
+
+  //Shows count of products in the cart.
+  //1 It counts the product unq id's in the cart.
+  //2 And passes as a prop to navbar.
+  //3 Where the count will be shown in the cart
+  // const countInCart = cart.length;
+
+  //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  const handleGotoCart = () => {
+    navigate('/cart-checkout')
     
-      const fetchProductData = async () => {
-        try {
-          const response = await getProduct();
-          setProductAllData(response.data);
-          console.log("Get product successfully executed");
-          console.log(response.data);
-        } catch (error) {
-          console.log(`Error fetching products data ${error}`);
-          console.log("Error occured while getting products data.");
-        }
-      };
+  }
+  
 
-      //
-    
-      useEffect((category,subcategory) => {
-        fetchProductData();
-      }, []);
-    
-
-   //Filtering product data according to the category and subcategory selected by user and showing it on product page.
-   const filteredProducts = allProductData.filter(eachFilteredProduct => eachFilteredProduct.productCategory === category && eachFilteredProduct.productSubName === subcategory)
-   //console.log(filteredProducts)
-   //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-    return (
-        <>
-        <NavBar/>
+  return (
+    <>
+      <NavBar cartCount={"cartArray"} />
       <h1>I am prodcut Listing page</h1>
-      <div 
+      <div
         style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-            gap: "20px",
-            justifyContent: "center",
-            padding: "20px",}}
-       
-       >
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+          gap: "20px",
+          justifyContent: "center",
+          padding: "20px",
+        }}
+      >
         {filteredProducts.map((eachProduct) => {
           return (
-            <div
-            key={eachProduct._id}
-            >
-              
+            <div key={eachProduct._id}>
               <Card style={{ width: "18rem" }} key={eachProduct._id}>
                 <Card.Img variant="top" src={eachProduct.productImage} />
                 <Card.Body>
                   <Card.Title>{eachProduct.productName}</Card.Title>
-                  <Card.Text>
-                    
-                    {eachProduct.productNameDescription}
-                  </Card.Text>
+                  <Card.Text>{eachProduct.productNameDescription}</Card.Text>
+                  <Card.Text>{`Rs. ${eachProduct.salePrice}`}</Card.Text>
                   {/* sending proudctId in params using useParams to the ProductSubCategory.jsx component */}
-                  <Link to={""}><Button variant="primary">Add to cart</Button></Link> 
+                  {productContext.some(
+                    (item) => item.product._id === eachProduct._id
+                  ) ? (
+                    <>
+                      <Button
+                        id={eachProduct._id}
+                        variant="primary"
+                        onClick={() => addProductToCart(eachProduct._id)}
+                        disabled
+                      >
+                        Add to cart
+                      </Button>
+                      <br></br>
+                      <br></br>
+                      <Button onClick={handleGotoCart}>Go to Cart</Button>
+                    </>
+                  ) : (
+                    <Button
+                      id={eachProduct._id}
+                      variant="primary"
+                      onClick={() => addProductToCart(eachProduct._id)}
+                    >
+                      Add to cart
+                    </Button>
+                  )}
                 </Card.Body>
               </Card>
               <br></br>
@@ -82,6 +212,9 @@ export default function Products () {
           );
         })}
       </div>
+
+      {/* below div is for when cart has some products in it */}
+      <CartAndCheckout />
     </>
-    )
-};
+  );
+}
