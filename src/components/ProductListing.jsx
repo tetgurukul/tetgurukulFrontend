@@ -35,39 +35,35 @@ export function ProductListing() {
 
   return (
     <>
-      {/* <h1>I am prodcut Listing page</h1> */}
-      <div 
-        style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-            gap: "20px",
-            justifyContent: "center",
-            padding: "20px",}}
-       
-       >
-        {allProductData.map((eachProduct) => {
-          return (
-            <div
-            key={eachProduct._id}
-            >
-              
-              <Card style={{ width: "18rem" }} key={eachProduct._id}>
-                <Card.Img variant="top" src={eachProduct.productCategoryImage} />
-                <Card.Body>
-                  <Card.Title>{eachProduct.productCategory}</Card.Title>
-                  <Card.Text>
-                    
-                    {eachProduct.productCategoryDescription}
-                  </Card.Text>
-                  {/* sending proudctId in params using useParams to the ProductSubCategory.jsx component */}
-                  <Link to={`/productSubCategory/${eachProduct.productId}`}><Button variant="primary">CLICK TO SEE</Button></Link>
-                </Card.Body>
-              </Card>
-              <br></br>
-            </div>
-          );
-        })}
-      </div>
-    </>
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+        gap: "20px",
+        justifyContent: "center",
+        padding: "20px",
+      }}
+    >
+      {allProductData.map((eachProduct) => {
+        return (
+          <div key={eachProduct._id}>
+            <Card className="productsCard" style={{ width: "18rem" }} key={eachProduct._id}>
+              <Card.Img variant="top" src={eachProduct.productCategoryImage} />
+              <Card.Body>
+                <Card.Title>{eachProduct.productCategory}</Card.Title>
+                <Card.Text>
+                  {eachProduct.productCategoryDescription}
+                </Card.Text>
+                <Link to={`/productSubCategory/${eachProduct.productId}`}>
+                  <Button variant="primary">CLICK TO SEE</Button>
+                </Link>
+              </Card.Body>
+            </Card>
+            <br />
+          </div>
+        );
+      })}
+    </div>
+  </>
   );
 }

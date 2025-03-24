@@ -172,7 +172,7 @@ export default function Products() {
       >
         {filteredProducts.map((eachProduct) => {
           return (
-            <div key={eachProduct._id}>
+            <div  key={eachProduct._id}>
               <Card style={{ width: "18rem" }} key={eachProduct._id}>
                 <Card.Img variant="top" src={eachProduct.productImage} />
                 <Card.Body>

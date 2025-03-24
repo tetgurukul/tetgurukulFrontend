@@ -32,6 +32,7 @@ import CustomerOrders from './components/CustomerOrders.jsx';
 import ShowOrders from './components/ShowOrders.jsx';
 import PaymentPageByAdmin from "./pages/PaymentPageByAdmin.jsx";
 import Footer from './components/Footer.jsx';
+import AboutUs from './pages/AboutUs.jsx';
 
 
 function App() {
@@ -77,6 +78,7 @@ function App() {
           <Route path = '/signup' element = {<CustomerSignupPage/>}/>
           <Route path='/orders' element = {<CustomerOrders/>}/>
 
+          <Route path='/about-us' element = {<AboutUs/>}/>
 
 
 
