@@ -3,16 +3,7 @@ import Container from 'react-bootstrap/Container';
 
 function Footer() {
 
-  const whatsappIcon = "./whatsappIcon.png"
 
-  //Below snippet takes the users to whatsapp, when someone clicks on the whatsapp icon.
-
-  const phoneNumber = '9811686905';
-  const message = "Hello! From Tet-gurukul. Please whatsapp us your queries";
-
-  const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-
-  //_________________________________________________________________
 
   useEffect(() => {
     // Add any side effects here if needed
@@ -21,14 +12,12 @@ function Footer() {
   return (
     <>
       {/* Using the <footer> HTML element */}
-      <footer style={{ backgroundColor: '#f8f9fa', padding: '20px' }}>
+      <footer style={{ backgroundColor: '#800080', padding: '20px', color:'white', }}>
         <Container className="text-left" style={{ fontSize: '12px' }}>
           {/* Contact Info */}
+          
           <div>
-            <p>For queries: <a href={whatsappLink} target="_blank" rel="noopener noreferrer"><img src={whatsappIcon} alt='whatsapp logo'/> </a><strong>9811686905</strong></p>
-          </div>
-          <div>
-            <p >We are also available on Amazon & Flipkart.</p>
+            <p style={{fontSize:'15px'}}>We are also available on  <img src='./amazon-logo-white.png' style={{width:'65px', marginTop: '8px'}}/> & <img src='./flipkart-logo-white.png' style={{width:'85px', marginTop: '-2px'}}/></p>
           </div>
          <hr></hr>
         </Container>

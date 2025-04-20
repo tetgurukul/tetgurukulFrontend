@@ -2,6 +2,7 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import Whatsapp from './components/Whatsapp.jsx';
 
 //Importing landing page of the site.
 import LandingPage from './pages/LandingPage';
@@ -27,12 +28,26 @@ import { OrderProvider } from './components/ContextApi/yourOrdersContextApi.js';
 //__________________________________________________________
 import CartAndCheckout from './components/Cart&Checkout.jsx';
 import CustomerOrderForm from './components/CustomerOrderForm.jsx';
-import CustomerSignupPage from './components/CustomerSignupPage.jsx';
+
 import CustomerOrders from './components/CustomerOrders.jsx';
 import ShowOrders from './components/ShowOrders.jsx';
 import PaymentPageByAdmin from "./pages/PaymentPageByAdmin.jsx";
 import Footer from './components/Footer.jsx';
 import AboutUs from './pages/AboutUs.jsx';
+import CustomerSignupPage from "../src/pages/CustomerSignupPage.jsx";
+
+import PhoneAuth from './components/PhoneAuth.jsx';
+
+//Importing admins compoentts
+import CreateProductCategory from './components/ProductAdmin/CreateProductCategory.jsx';
+import ProductCategoryList from './components/ProductAdmin/ProductCategoryList.jsx';
+import EditAndDeleteCategory from './components/ProductAdmin/EditAndDeleteCategoryForm.jsx';
+
+import CreateProductSubcategory from './components/ProductAdmin/CreateProductSubCategory.jsx';
+import ProductSubcategoryList from './components/ProductAdmin/ProductSubCategoryList.jsx';
+import EditAndDeleteSubCategory from './components/ProductAdmin/EditAndDeleteSubCategory.jsx';
+import CreateFinalProduct from './components/ProductAdmin/CreateFinalProduct.jsx';
+
 
 
 function App() {
@@ -40,6 +55,7 @@ function App() {
     <>
     
     <Router>
+      <Whatsapp/>
       <ProductContextProvider>
       <OrderProvider>
       <Routes>
@@ -60,9 +76,9 @@ function App() {
           
           <Route path='/' element = {<LandingPage/>}/>
           <Route path='/productSubCategory/:id' element = {<ProductSubCategory/>}/>
-          <Route path='/products/:category/:subcategory' element = {<Products/>}/>
+          <Route path='/products/:productCategory/:productSubCategoryId' element = {<Products/>}/>
 
-          <Route path='/product/:category/:subcategory' element = {<Product/>}/>
+          <Route path='/product/:productCategory/:productSubCategoryId' element = {<Product/>}/>
 
           {/* Routes related to customer orders */}
           <Route path='/customer-order' element = {<CustomerOrders/>}/>
@@ -81,6 +97,24 @@ function App() {
           <Route path='/about-us' element = {<AboutUs/>}/>
 
 
+          {/* routes for Customer Signup */}
+
+          <Route path='/sign-up' element = {<CustomerSignupPage/>}/>
+
+
+        {/* Admint Routes */}
+        <Route path='/create-product-category' element = {<CreateProductCategory/>}/>
+        <Route path='/product-category-list' element = {<ProductCategoryList/>}/>
+        <Route path='/edit-delete-category' element = {<EditAndDeleteCategory/>}/>
+        <Route path='/create-product-subcategory' element = {<CreateProductSubcategory/>}/>
+        <Route path='/product-subcategory-list' element = {<ProductSubcategoryList/>}/>
+        <Route path='/edit-delete-subcategory' element = {<EditAndDeleteSubCategory/>}/>
+        <Route path='/create-product' element = {<CreateFinalProduct/>}/>
+        
+
+
+
+      <Route path='/auth' element = {<PhoneAuth/>}/>
 
       </Routes>
       </OrderProvider>

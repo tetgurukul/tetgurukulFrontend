@@ -36,3 +36,152 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+
+
+
+
+
+
+
+#recaptcha-container {
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+}
+
+
+
+#nav-main {
+  background-color: #800080;
+  
+}
+
+
+
+
+
+/* Floating whatsapp */
+
+.floating-whatsapp {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  background-color: #25d366;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.floating-whatsapp:hover {
+  transform: scale(1.1);
+}
+
+.whatsapp-icon {
+  width: 40px;
+  height: 40px;
+}
+
+/*__________________________________________________*/
+
+
+
+
+
+
+
+
+/* About us css */
+
+/* AboutUs.css */
+
+/* AboutUs.css */
+
+/* AboutUs.css */
+
+.about-container {
+  background: linear-gradient(to right, #4B0082, #8A2BE2);
+  padding: 00px 20px;
+  min-height: 100vh;
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+}
+
+/* Inner content styled like a modern card */
+.about-content {
+  max-width: 1000px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+  padding: 50px 40px;
+  border-radius: 15px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.about-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* Section titles */
+.about-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #4B0082;
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.about-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: #8A2BE2;
+  margin: 10px auto 30px;
+  border-radius: 2px;
+}
+
+/* Paragraph styles */
+.about-text {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin-bottom: 30px;
+  color: #444;
+}
+
+.about-text strong {
+  color: #4B0082;
+}
+
+/* CTA message at the bottom */
+.about-join {
+  text-align: center;
+  color: #8A2BE2;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-top: 40px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .about-content {
+    padding: 30px 20px;
+  }
+
+  .about-title {
+    font-size: 2rem;
+  }
+
+  .about-text {
+    font-size: 1.05rem;
+  }
+}

@@ -2,22 +2,31 @@
 
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:8050/api/customers"; // Update with your backend URL
+//const API_BASE_URL = "http://localhost:8050/api/customers"; // Update with your backend URL
+
+
+//Enviornment variable
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 
 // Create a new customer
+// export const postCustomer = async (data) => {
+//   try {
+//     const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/customers`, data, {
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
+//     console.log("Customer created:", response.data);
+//     return response.data;
+//   } catch (error) {
+//     console.error("Error creating customer:", error.message);
+//     throw error;
+//   }
+// };
+
 export const postCustomer = async (data) => {
-  try {
-    const response = await axios.post(`${API_BASE_URL}/`, data, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    console.log("Customer created:", response.data);
-    return response.data;
-  } catch (error) {
-    console.error("Error creating customer:", error.message);
-    throw error;
-  }
+  await axios.post(`${API_BASE_URL}/postcustomers`, data)
 };
 
 // Get all customers

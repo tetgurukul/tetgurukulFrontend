@@ -3,7 +3,7 @@
 //Importing packages
 import React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
-import { getProduct, subCategoryOfProduct } from "../services/ProductService";
+import { getProduct, subCategoryOfProduct, getProductSubcategory } from "../services/ProductService";
 import { Button, Card } from "react-bootstrap";
 import NavBar from "../components/NavBar";
 import { Link } from "react-router-dom"; //For passing product category, subcategory, and id to the Products component.
@@ -14,6 +14,7 @@ export function ProductSubCategory () {
     //Below id is coming from ProductListing.jsx by using useParmas and Lins featur of react.
     //I will use below feature to dynamically show only subcategory of those product clicked to buy on frontend.
     const {id} = useParams();
+    const productCategory = id;
 
     // console.log(`below id is from useParams`)
     // console.log(id);
@@ -27,11 +28,23 @@ export function ProductSubCategory () {
       //But in future i will create an optimise api which will just fetch...
       //...only the required data to show.
     
+      // const fetchProductData = async () => {
+      //   try {
+      //     const response = await subCategoryOfProduct();
+      //     setProductAllData(response.data);
+      //     console.log("Get product successfully executed");
+      //     console.log(response.data);
+      //   } catch (error) {
+      //     console.log(`Error fetching products data ${error}`);
+      //     console.log("Error occured while getting products data.");
+      //   }
+      // };
+ console.log(id)
       const fetchProductData = async () => {
         try {
-          const response = await subCategoryOfProduct();
+          const response = await getProductSubcategory(productCategory);
           setProductAllData(response.data);
-          console.log("Get product successfully executed");
+          console.log("Get product successfully executed in product subcategories");
           console.log(response.data);
         } catch (error) {
           console.log(`Error fetching products data ${error}`);
@@ -41,12 +54,13 @@ export function ProductSubCategory () {
 
       useEffect (() => {
         fetchProductData()
+        
       }, [id])
 
    
 
       //Using below const we can only show those products whose id is equal to id that we are recieving form useParams.
-        const filteredActiveProduct = allProductData.filter(eachAllProduct => eachAllProduct.productId === id)
+        //const filteredActiveProduct = allProductData.filter(eachAllProduct => eachAllProduct.productId === id)
 
 
     return (
@@ -62,21 +76,29 @@ export function ProductSubCategory () {
             padding: "20px",}}
        
        >
-        {filteredActiveProduct.map((eachProduct) => {
+        {allProductData.map((eachProduct) => {
           return (
             <div
             key={eachProduct._id}
             >
               
               <Card style={{ width: "18rem" }} key={eachProduct._id}>
-                <Card.Img variant="top" src={eachProduct.productSubImage} />
+                <Card.Img variant="top" src={eachProduct.productSubImage} 
+                
+                style={{ 
+                  height: '200px', 
+                  objectFit: 'contain' // or "cover" or "scale-down"
+                }} 
+                
+                
+                />
                 <Card.Body>
                   <Card.Title>{eachProduct.productSubName}</Card.Title>
                   <Card.Text>
                     
-                    {eachProduct.productCategoryDescription}
+                    {eachProduct.aboutProductSubcategory}
                   </Card.Text>
-                  <Link to={`/products/${eachProduct.productCategory}/${eachProduct.productSubName}`}><Button variant="primary">CLICK TO SEE ITEMS</Button></Link>
+                  <Link to={`/products/${eachProduct.productCategory}/${eachProduct.productSubCategoryId}`}><Button variant="primary">CLICK TO SEE ITEMS</Button></Link>
                 </Card.Body>
               </Card>
               <br></br>

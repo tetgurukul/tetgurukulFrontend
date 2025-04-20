@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import RazorpayCheckout from "../components/RazorpayCheckout";
 import { useLocation } from "react-router-dom";
 import { getOrderByOrderId } from "../services/orderServices";
+import { Container } from "react-bootstrap";
+import NavBar from "../components/NavBar";
 
 const PaymentPage = () => {
   const [customerOrderObject, setCustomerOrderObject] = useState(null); // Initially null
@@ -56,10 +58,16 @@ const PaymentPage = () => {
   console.log(`I am final orderObject Id: ${orderObjectId}`);
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
+    <Container fluid>
+      <div>
+        <NavBar/>
+      </div>
+<div style={{ textAlign: "center", marginTop: "50px" }}>
       <h2>Total Amount: ₹{amount || finalAmount}</h2>
       {orderObjectId && <RazorpayCheckout orderId={orderObjectId} amount={amount || finalAmount} />}
     </div>
+    </Container>
+    
   );
 };
 
