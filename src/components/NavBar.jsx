@@ -30,7 +30,7 @@ function NavBar(propsForShoingProductCountInCart) {
     <>
     <Navbar expand="lg"  id='nav-main'  >
       <Container>
-        <img src='/tetgurukulLogo.JPG' alt='TetGurukulLogo' style={{height:70, width:100}}/>
+        <img src='/tetgurukulLogo.PNG' alt='TetGurukulLogo' style={{height:70, width:100}}/>
   
         <Navbar.Brand href="/" className="mx-auto" style={{ fontFamily: 'Lobster, cursive', fontWeight: 'bold', fontSize: '45px', textAlign: 'center', color: 'white' }}>
   <div style={{ lineHeight: '1', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

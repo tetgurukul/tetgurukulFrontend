@@ -47,7 +47,8 @@ import CreateProductSubcategory from './components/ProductAdmin/CreateProductSub
 import ProductSubcategoryList from './components/ProductAdmin/ProductSubCategoryList.jsx';
 import EditAndDeleteSubCategory from './components/ProductAdmin/EditAndDeleteSubCategory.jsx';
 import CreateFinalProduct from './components/ProductAdmin/CreateFinalProduct.jsx';
-
+import { PrivacePolicy } from './pages/PrivacyPolicy&TermsAndConditions/PrivacyPolicy.jsx';
+import { TermsAndConditions } from './pages/PrivacyPolicy&TermsAndConditions/TermsAndConditions.jsx';
 
 
 function App() {
@@ -116,6 +117,9 @@ function App() {
 
       <Route path='/auth' element = {<PhoneAuth/>}/>
 
+      {/* Privacy policy and Terms and Conditions */}
+      <Route path='/privacy-policy' element = {<PrivacePolicy/>}/>
+      <Route path='/terms-and-conditions' element = {<TermsAndConditions/>}/>
       </Routes>
       </OrderProvider>
       </ProductContextProvider>

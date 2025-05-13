@@ -12,12 +12,18 @@ function Footer() {
   return (
     <>
       {/* Using the <footer> HTML element */}
-      <footer style={{ backgroundColor: '#800080', padding: '20px', color:'white', }}>
+      <footer className='footer-main' >
         <Container className="text-left" style={{ fontSize: '12px' }}>
           {/* Contact Info */}
           
           <div>
             <p style={{fontSize:'15px'}}>We are also available on  <img src='./amazon-logo-white.png' style={{width:'65px', marginTop: '8px'}}/> & <img src='./flipkart-logo-white.png' style={{width:'85px', marginTop: '-2px'}}/></p>
+          </div>
+          <div>
+            <p style={{fontSize:'15px'}}><a href='/privacy-policy' target='__blank'>Privacy Policies</a></p>
+          </div>
+           <div>
+            <p style={{fontSize:'15px'}}><a href='/terms-and-conditions' target='__blank'>Terms & Conditions</a></p>
           </div>
          <hr></hr>
         </Container>
