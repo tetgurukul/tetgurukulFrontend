@@ -49,7 +49,8 @@ import EditAndDeleteSubCategory from './components/ProductAdmin/EditAndDeleteSub
 import CreateFinalProduct from './components/ProductAdmin/CreateFinalProduct.jsx';
 import { PrivacePolicy } from './pages/PrivacyPolicy&TermsAndConditions/PrivacyPolicy.jsx';
 import { TermsAndConditions } from './pages/PrivacyPolicy&TermsAndConditions/TermsAndConditions.jsx';
-
+import { ShippingPolicy } from './pages/PrivacyPolicy&TermsAndConditions/ShippingPolicy.jsx';
+import { CancellationAndRefundPolicy } from './pages/PrivacyPolicy&TermsAndConditions/CancellationAndRefundPolicy.jsx';
 
 function App() {
   return (
@@ -120,6 +121,8 @@ function App() {
       {/* Privacy policy and Terms and Conditions */}
       <Route path='/privacy-policy' element = {<PrivacePolicy/>}/>
       <Route path='/terms-and-conditions' element = {<TermsAndConditions/>}/>
+      <Route path='shipping-policy' element = {<ShippingPolicy/>}/>
+      <Route path='/cancellation-and-refund-policy' element = {<CancellationAndRefundPolicy/>}/>
       </Routes>
       </OrderProvider>
       </ProductContextProvider>

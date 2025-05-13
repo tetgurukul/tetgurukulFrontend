@@ -60,6 +60,20 @@ function Footer() {
                 </a>
               </p>
             </div>
+            <div>
+              <p style={{ fontSize: "15px", color:'white' }}>
+                <a style={{  color:'white' }} href="/shipping-policy" target="__blank">
+                  Shipping Policies
+                </a>
+              </p>
+            </div>
+             <div>
+              <p style={{ fontSize: "15px", color:'white' }}>
+                <a style={{  color:'white' }} href="/cancellation-and-refund-policy" target="__blank">
+                  Cancellation & Refund Policies
+                </a>
+              </p>
+            </div>
           </Container>
         </div>
 
